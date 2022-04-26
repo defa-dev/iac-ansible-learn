@@ -1,0 +1,7 @@
+---
+- name: Provisionamento app contador
+  hosts: pythonapp
+  become: true
+
+  roles: 
+    - defa_dev.python_app

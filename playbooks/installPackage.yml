@@ -1,0 +1,20 @@
+- hosts: all
+  gather_facts: false
+  become: True
+  tasks:
+    - name: Instalar pacotes
+      yum:
+        name:
+          - telnet
+          - bind-utils
+          - htop
+          - trace-cmd
+          - vim
+          - git
+        state: absent
+      register: resultado
+
+    - name: Exibir resultado
+      debug:
+        msg: "{{ resultado }}"
+

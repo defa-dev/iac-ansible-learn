@@ -1,0 +1,12 @@
+- hosts: all
+  gather_facts: False
+  vars:
+    pacotes:
+      - sysstat
+      - docker
+      - nginx
+  tasks:
+  - name: Exibindo variaveis
+    debug: 
+      msg: "{{ item }}"
+    with_items: "{{ pacotes }}"

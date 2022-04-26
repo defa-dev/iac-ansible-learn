@@ -1,0 +1,7 @@
+facts.yml
+- name: Fact Dump
+  hosts: all
+  tasks:
+    - name: Exibindo Facts
+      debug:
+        var: ansible_facts

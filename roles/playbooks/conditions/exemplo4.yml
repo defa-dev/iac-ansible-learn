@@ -1,0 +1,11 @@
+- name: Fact Dump
+  hosts: all
+  tasks:
+    - name: Register Variable
+      shell: cat /etc/motd
+      register: motd_content
+
+    - name: Use the variable in conditional statement
+      shell: echo "motd contains the word amazon"
+      when: motd_content.stdout.find('amazon') != -1
+      

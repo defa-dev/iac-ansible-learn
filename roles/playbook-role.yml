@@ -1,0 +1,7 @@
+---
+- name: Provisionamento webserver nginx
+  hosts: debian
+  become: true
+
+  roles: 
+    - webserver

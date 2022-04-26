@@ -1,0 +1,13 @@
+---
+- hosts: webserver
+  gather_facts: False
+  vars:
+    turma: 100
+  tasks:
+    - name: Exibindo o valor da variavel turma
+      debug: 
+        msg: "{{ turma }}"
+
+    - name: Exibindo usuarios
+      debug:
+        msg: "Usuarios: {{ user }}"

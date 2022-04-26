@@ -1,0 +1,37 @@
+---
+- hosts: pythonapp
+  become: true
+
+  tasks:
+    - name: Instalar Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop:
+        - docker.io
+        - docker-compose
+
+    - name: Habilitar Docker no bootstrap
+      service:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Copiando arquivos para o host
+      copy:
+        src: "{{ item }}"
+        dest: "/home/admin/{{ item }}"
+      loop:
+        - Dockerfile
+        - docker-compose.yml
+        - app.py
+        - requirements.txt
+        
+    - name: Construindo a imagem Docker
+      command: docker build -t pythonapp:1.0 .
+      register: docker_build
+
+    - name: Subindo a aplicacao
+      command: docker-compose up -d
+      register: docker_compose_up

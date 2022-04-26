@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: True
+
+  tasks:
+    - name: Exibindo variaveis
+      debug:
+        msg: "Interface 01: {{ ansible_facts['interfaces'][0]}}"
+

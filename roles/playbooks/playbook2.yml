@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: Obtendo dados do sistema
+      shell: "date -u"
+      register: linux_date
+
+    - name: Exibinda a data
+      debug:
+        msg: "Data do sistema: {{ linux_date }}"
+

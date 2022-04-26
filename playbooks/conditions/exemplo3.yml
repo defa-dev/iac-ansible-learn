@@ -1,0 +1,12 @@
+- name: Fact Dump
+  hosts: all
+  tasks:
+    #- name: Exibindo Facts
+      #debug:
+        #var: ansible_facts
+
+    - name: Executando when condition
+      ansible.builtin.command: echo "Ativou Condicao"
+      when:
+        - ansible_facts['os_family'] == "Debian"
+        - ansible_facts['distribution'] == "Amazon"
